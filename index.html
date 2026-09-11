@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/webp" href="assets/images/icon.webp">
+  <link rel="apple-touch-icon" href="assets/images/icon.webp">
   <meta name="description" content="KGSMP — Minecraft Survival Server. Build, explore, survive.">
   <title>KGSMP — Minecraft Survival Server</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +18,11 @@
   <header class="site-header" data-header>
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="KGSMP Home">
-        <span class="brand-mark">KG</span>
+        <img
+          class="brand-logo"
+          src="assets/images/icon.webp"
+          alt="KGSMP"
+        >
         <span>KGSMP</span>
       </a>
 
@@ -37,7 +43,7 @@
   </header>
 
   <main id="top">
-    <section class="hero section">
+    <section class="hero hero--image" id="top">
       <div class="hero-backdrop" aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="container hero-content">
@@ -184,7 +190,14 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a class="brand" href="#top"><span class="brand-mark">KG</span><span>KGSMP</span></a>
+        <a class="brand" href="#top">
+            <img
+            class="brand-logo"
+            src="assets/images/icon.webp"
+            alt="KGSMP"
+          >
+          <span>KGSMP</span>
+        </a>
         <p>Minecraft Survival Server</p>
       </div>
       <div><strong>SERVER</strong><span>play.kgsmp.net</span></div>
