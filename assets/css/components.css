@@ -1,3 +1,7 @@
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
 .button {
   display: inline-flex;
   min-height: 50px;
@@ -49,6 +53,11 @@
   padding-inline: 18px;
 }
 
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
 .status-dot {
   width: 8px;
   height: 8px;
@@ -56,13 +65,19 @@
   flex: 0 0 auto;
   border-radius: 50%;
   background: var(--success);
-  box-shadow: 0 0 14px rgba(57,217,138,.6);
+  box-shadow: 0 0 14px rgba(57, 217, 138, .6);
 }
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
 
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
   font-size: .86rem;
   font-weight: 800;
   letter-spacing: .08em;
@@ -72,9 +87,14 @@
   width: 34px;
   height: 34px;
   display: block;
-  object-fit: contain;
   flex: 0 0 auto;
+  object-fit: contain;
 }
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .site-header {
   position: fixed;
@@ -141,6 +161,11 @@
   transform: scaleX(1);
 }
 
+
+/* =========================================================
+   COPY BUTTON
+   ========================================================= */
+
 .copy-button {
   min-height: 40px;
   padding: 0 13px;
@@ -163,7 +188,17 @@
   background: var(--accent-soft);
 }
 
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+
+.nav-toggle {
+  display: none;
+}
+
 @media (max-width: 800px) {
+
   .header-inner {
     gap: 12px;
   }
@@ -174,21 +209,21 @@
 
   .nav-toggle {
     display: grid;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
+    align-content: center;
     gap: 5px;
     padding: 10px;
-    margin-right: -6px;
-    align-content: center;
-    border: 0;
-    border-radius: 7px;
-    background: transparent;
+    margin-right: -5px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .025);
     cursor: pointer;
   }
 
   .nav-toggle span {
     width: 100%;
-    height: 2px;
+    height: 1.5px;
     background: var(--text);
     transition:
       transform .2s ease,
@@ -196,7 +231,7 @@
   }
 
   .site-header:has(.site-nav.is-open) .nav-toggle span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(6.5px) rotate(45deg);
   }
 
   .site-header:has(.site-nav.is-open) .nav-toggle span:nth-child(2) {
@@ -204,23 +239,23 @@
   }
 
   .site-header:has(.site-nav.is-open) .nav-toggle span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-6.5px) rotate(-45deg);
   }
 
   .site-nav {
     position: fixed;
-    top: var(--header-height);
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: calc(var(--header-height) + 8px);
+    right: var(--gutter);
+    left: var(--gutter);
     display: flex;
-    padding: 12px var(--gutter) 24px;
-    flex-direction: column;
     align-items: stretch;
     gap: 0;
-    border-top: 1px solid var(--line);
-    background: rgba(8, 8, 10, .97);
-    backdrop-filter: blur(20px);
+    padding: 7px;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    background: rgba(10, 10, 13, .96);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .38);
+    backdrop-filter: blur(22px);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);
@@ -237,9 +272,10 @@
   }
 
   .site-nav a {
-    padding: 18px 8px;
-    border-bottom: 1px solid var(--line);
-    font-size: .7rem;
+    padding: 14px 13px;
+    border-radius: 7px;
+    border-bottom: 0;
+    font-size: .65rem;
   }
 
   .site-nav a::after {
@@ -247,15 +283,31 @@
   }
 
   .site-nav a.is-active {
-    color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-strong);
   }
 }
 
 @media (max-width: 420px) {
-  .button { min-height: 46px; padding-inline: 17px; font-size: .66rem; }
-  .brand { gap: 8px; font-size: .82rem; }
+
+  .brand {
+    gap: 8px;
+    font-size: .8rem;
+  }
+
   .brand-logo {
-    width: 31px;
-    height: 31px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .button {
+    min-height: 46px;
+    padding-inline: 17px;
+    font-size: .63rem;
   }
 }
