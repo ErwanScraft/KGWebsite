@@ -4,19 +4,20 @@
 
 .button {
   display: inline-flex;
+
   width: 100%;
   min-height: 48px;
 
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
 
   padding: 0 18px;
 
   border: 1px solid transparent;
   border-radius: 8px;
 
-  font-size: .63rem;
+  font-size: .64rem;
   font-weight: 800;
   letter-spacing: .08em;
 
@@ -33,19 +34,23 @@
   transform: translateY(-2px);
 }
 
+.button:active {
+  transform: translateY(0);
+}
+
 .button--primary {
   background: var(--accent);
   color: #0b0910;
 
   box-shadow:
-    0 8px 30px rgba(155, 124, 255, .16);
+    0 8px 28px rgba(155, 124, 255, .15);
 }
 
 .button--primary:hover {
   background: var(--accent-strong);
 
   box-shadow:
-    0 10px 36px rgba(155, 124, 255, .24);
+    0 12px 34px rgba(155, 124, 255, .22);
 }
 
 .button--ghost {
@@ -57,13 +62,14 @@
 }
 
 .button--ghost:hover {
-  border-color: rgba(155, 124, 255, .5);
+  border-color: rgba(155, 124, 255, .45);
   background: var(--accent-soft);
 }
 
 .button--small {
   width: auto;
   min-height: 40px;
+
   padding-inline: 16px;
 }
 
@@ -73,8 +79,8 @@
    ========================================================= */
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 
   display: inline-block;
   flex: 0 0 auto;
@@ -84,7 +90,7 @@
   background: var(--success);
 
   box-shadow:
-    0 0 14px rgba(57, 217, 138, .6);
+    0 0 12px rgba(72, 213, 151, .55);
 }
 
 
@@ -106,10 +112,9 @@
 }
 
 .brand-logo {
-  width: 30px;
-  height: 30px;
+  width: 29px;
+  height: 29px;
 
-  display: block;
   flex: 0 0 auto;
 
   object-fit: contain;
@@ -122,10 +127,9 @@
 
 .site-header {
   position: fixed;
+  inset: 0 0 auto;
 
   z-index: 50;
-
-  inset: 0 0 auto;
 
   height: var(--header-height);
 
@@ -138,11 +142,11 @@
 }
 
 .site-header.is-scrolled {
-  background: rgba(8, 8, 10, .78);
+  background: rgba(8, 8, 10, .76);
 
   border-color: var(--line);
 
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(18px);
 }
 
 .header-inner {
@@ -166,24 +170,18 @@
    ========================================================= */
 
 .nav-toggle {
+  width: 40px;
+  height: 40px;
+
   display: grid;
 
-  width: 42px;
-  height: 42px;
-
-  flex: 0 0 42px;
+  flex: 0 0 40px;
 
   align-content: center;
 
   gap: 5px;
 
   padding: 10px;
-
-  /*
-   * Do not pull the burger toward the viewport edge.
-   * .container already provides the mobile gutter.
-   */
-  margin-right: 0;
 
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -204,15 +202,18 @@
     opacity .2s ease;
 }
 
-.site-header:has(.site-nav.is-open) .nav-toggle span:nth-child(1) {
+.site-header:has(.site-nav.is-open)
+.nav-toggle span:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
 }
 
-.site-header:has(.site-nav.is-open) .nav-toggle span:nth-child(2) {
+.site-header:has(.site-nav.is-open)
+.nav-toggle span:nth-child(2) {
   opacity: 0;
 }
 
-.site-header:has(.site-nav.is-open) .nav-toggle span:nth-child(3) {
+.site-header:has(.site-nav.is-open)
+.nav-toggle span:nth-child(3) {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
@@ -227,7 +228,6 @@
   display: flex;
 
   flex-direction: column;
-  align-items: stretch;
 
   gap: 2px;
 
@@ -236,10 +236,10 @@
   border: 1px solid var(--line-strong);
   border-radius: 12px;
 
-  background: rgba(10, 10, 13, .96);
+  background: rgba(10, 10, 13, .97);
 
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, .38);
+    0 24px 60px rgba(0, 0, 0, .4);
 
   backdrop-filter: blur(22px);
 
@@ -262,8 +262,6 @@
 }
 
 .site-nav a {
-  position: relative;
-
   padding: 14px 13px;
 
   border-radius: 7px;
@@ -279,10 +277,6 @@
   transition:
     color .2s ease,
     background .2s ease;
-}
-
-.site-nav a::after {
-  display: none;
 }
 
 .site-nav a:hover,
@@ -303,7 +297,7 @@
 .copy-button {
   min-height: 42px;
 
-  padding: 0 13px;
+  padding: 0 14px;
 
   border: 1px solid var(--line);
   border-radius: 7px;
@@ -327,12 +321,13 @@
 
 .copy-button:hover {
   border-color: rgba(155, 124, 255, .5);
+
   background: var(--accent-soft);
 }
 
 
 /* =========================================================
-   TABLET / DESKTOP HEADER
+   TABLET / DESKTOP
    ========================================================= */
 
 @media (min-width: 701px) {
@@ -364,6 +359,7 @@
     display: flex;
 
     flex-direction: row;
+
     align-items: center;
 
     gap: 28px;
@@ -386,8 +382,13 @@
   }
 
   .site-nav a {
+    position: relative;
+
     padding: 0;
+
     border-radius: 0;
+
+    font-size: .65rem;
   }
 
   .site-nav a::after {
@@ -398,8 +399,6 @@
     right: 0;
     bottom: -9px;
     left: 0;
-
-    display: block;
 
     height: 1px;
 
