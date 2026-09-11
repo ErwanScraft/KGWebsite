@@ -2,15 +2,29 @@
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" type="image/webp" href="assets/images/icon.webp">
-  <link rel="apple-touch-icon" href="assets/images/icon.webp">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#08080a"
+  >
 
   <meta
     name="description"
     content="KGSMP — Minecraft Survival Server. Build, explore, survive."
   >
+
+  <meta
+    name="robots"
+    content="index, follow"
+  >
+
+  <link rel="icon" type="image/webp" href="assets/images/icon.webp">
+  <link rel="apple-touch-icon" href="assets/images/icon.webp">
 
   <title>KGSMP — Minecraft Survival Server</title>
 
@@ -32,7 +46,11 @@
   <header class="site-header" data-header>
     <div class="container header-inner">
 
-      <a class="brand" href="#top" aria-label="KGSMP Home">
+      <a
+        class="brand"
+        href="#top"
+        aria-label="KGSMP Home"
+      >
         <img
           class="brand-logo"
           src="assets/images/icon.webp"
@@ -46,6 +64,7 @@
         type="button"
         aria-label="Buka menu"
         aria-expanded="false"
+        aria-controls="site-navigation"
         data-nav-toggle
       >
         <span></span>
@@ -53,7 +72,12 @@
         <span></span>
       </button>
 
-      <nav class="site-nav" data-nav>
+      <nav
+        class="site-nav"
+        id="site-navigation"
+        aria-label="Navigasi utama"
+        data-nav
+      >
         <a class="is-active" href="#top">Home</a>
         <a href="#server">Server</a>
         <a href="#features">Features</a>
@@ -70,18 +94,23 @@
     </div>
   </header>
 
+
   <main>
 
     <!-- Hero -->
 
-    <section class="hero" id="top">
+    <section
+      class="hero"
+      id="top"
+      aria-labelledby="hero-title"
+    >
       <div class="container hero-content">
 
         <p class="eyebrow">
           MINECRAFT SURVIVAL SERVER
         </p>
 
-        <h1>
+        <h1 id="hero-title">
           BUILD.<br>
           <span>EXPLORE.</span><br>
           SURVIVE.
@@ -99,7 +128,7 @@
             href="#server"
           >
             Play Now
-            <span>→</span>
+            <span aria-hidden="true">→</span>
           </a>
 
           <a
@@ -111,8 +140,14 @@
 
         </div>
 
-        <div class="hero-status">
-          <span class="status-dot"></span>
+        <div
+          class="hero-status"
+          aria-label="Status server"
+        >
+          <span
+            class="status-dot"
+            aria-hidden="true"
+          ></span>
 
           <strong data-server-state>
             ONLINE
@@ -139,7 +174,10 @@
 
     <!-- About -->
 
-    <section class="intro section">
+    <section
+      class="intro section"
+      aria-labelledby="intro-title"
+    >
 
       <div class="container intro-layout">
 
@@ -149,7 +187,7 @@
             TENTANG KAMI
           </p>
 
-          <h2>
+          <h2 id="intro-title">
             A DIFFERENT KIND<br>
             OF <span>SURVIVAL</span>
           </h2>
@@ -161,7 +199,10 @@
 
         </div>
 
-        <div class="intro-art">
+        <div
+          class="intro-art"
+          aria-hidden="true"
+        >
 
           <div class="art-orb"></div>
 
@@ -240,6 +281,7 @@
     <section
       class="server section"
       id="server"
+      aria-labelledby="server-title"
     >
 
       <div class="container server-card">
@@ -250,7 +292,7 @@
             SERVER STATUS
           </p>
 
-          <h2>
+          <h2 id="server-title">
             THE WORLD IS <span>ALIVE</span>
           </h2>
 
@@ -266,7 +308,10 @@
 
           <div class="status-panel-top">
 
-            <span class="status-dot"></span>
+            <span
+              class="status-dot"
+              aria-hidden="true"
+            ></span>
 
             <span data-server-state>
               ONLINE
@@ -296,6 +341,7 @@
               class="copy-button"
               type="button"
               data-copy-ip
+              aria-label="Copy server IP"
             >
               Copy IP
             </button>
@@ -318,7 +364,10 @@
 
     <!-- Gameplay Showcase -->
 
-    <section class="showcase section">
+    <section
+      class="showcase section"
+      aria-labelledby="showcase-title"
+    >
 
       <div class="container">
 
@@ -330,7 +379,7 @@
               GAMEPLAY SHOWCASE
             </p>
 
-            <h2>
+            <h2 id="showcase-title">
               EXPLORE A WORLD<br>
               MADE TO BE <span>DISCOVERED</span>
             </h2>
@@ -409,6 +458,7 @@
     <section
       class="features section"
       id="features"
+      aria-labelledby="features-title"
     >
 
       <div class="container">
@@ -421,7 +471,7 @@
               FITUR UTAMA
             </p>
 
-            <h2>
+            <h2 id="features-title">
               BUILT FOR THE <span>LONG RUN</span>
             </h2>
 
@@ -516,6 +566,7 @@
     <section
       class="community section"
       id="community"
+      aria-labelledby="community-title"
     >
 
       <div class="container community-inner">
@@ -526,7 +577,7 @@
             KOMUNITAS
           </p>
 
-          <h2>
+          <h2 id="community-title">
             PLAY <span>TOGETHER</span>
           </h2>
 
@@ -541,6 +592,7 @@
         <a
           class="button button--primary"
           href="#"
+          aria-label="Join our Discord"
         >
           Join our Discord →
         </a>
@@ -555,6 +607,7 @@
     <section
       class="faq section"
       id="faq"
+      aria-labelledby="faq-title"
     >
 
       <div class="container faq-layout">
@@ -565,7 +618,7 @@
             FAQ
           </p>
 
-          <h2>
+          <h2 id="faq-title">
             FREQUENTLY ASKED
             <span>QUESTIONS</span>
           </h2>
@@ -582,7 +635,7 @@
 
             <summary>
               Versi Minecraft apa yang didukung?
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </summary>
 
             <p>
@@ -597,7 +650,7 @@
 
             <summary>
               Apakah server Java atau Bedrock?
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </summary>
 
             <p>
@@ -612,7 +665,7 @@
 
             <summary>
               Bagaimana cara join?
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </summary>
 
             <p>
@@ -627,7 +680,7 @@
 
             <summary>
               Apakah server gratis dimainkan?
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </summary>
 
             <p>
@@ -641,7 +694,7 @@
 
             <summary>
               Apakah KGSMP memiliki Discord?
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </summary>
 
             <p>
