@@ -18,7 +18,7 @@
   --success: #48d597;
 
   --container: 1180px;
-  --gutter: 18px;
+  --gutter: 20px;
 
   --radius: 10px;
   --header-height: 58px;
@@ -154,7 +154,7 @@ h1 span {
 
 @media (min-width: 361px) {
   :root {
-    --gutter: 20px;
+    --gutter: 22px;
   }
 
   .section {

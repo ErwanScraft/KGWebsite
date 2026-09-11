@@ -65,8 +65,6 @@
   position: relative;
   z-index: 1;
 
-  width: 100%;
-
   padding-block: 76px 48px;
 }
 
@@ -1556,6 +1554,24 @@ summary span {
   }
 }
 
+@media (max-width: 700px) {
+  .hero-content {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .button {
+    min-width: 0;
+  }
+
+  .hero-status {
+    max-width: 100%;
+  }
+}
 
 /* =========================================================
    REDUCED MOTION
