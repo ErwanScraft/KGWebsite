@@ -1,0 +1,428 @@
+/* =========================================================
+   DESKTOP
+   981px+
+   ========================================================= */
+
+@media (min-width: 981px) {
+
+  /* =======================================================
+     GLOBAL
+     ======================================================= */
+
+  :root {
+    --gutter: 28px;
+    --header-height: 72px;
+  }
+
+  .section {
+    padding-block: 128px;
+  }
+
+  .eyebrow {
+    font-size: .64rem;
+  }
+
+
+  /* =======================================================
+     HEADER
+     ======================================================= */
+
+  .header-inner {
+    gap: 28px;
+  }
+
+  .brand {
+    gap: 10px;
+
+    font-size: .86rem;
+  }
+
+  .brand-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .header-cta {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    position: static;
+
+    display: flex;
+
+    flex-direction: row;
+    align-items: center;
+
+    gap: 32px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: none;
+  }
+
+  .site-nav a {
+    position: relative;
+
+    padding: 0;
+
+    border-radius: 0;
+
+    font-size: .67rem;
+  }
+
+  .site-nav a::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    bottom: -10px;
+    left: 0;
+
+    height: 1px;
+
+    background: var(--accent);
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition:
+      transform .2s ease;
+  }
+
+  .site-nav a:hover::after,
+  .site-nav a.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .site-nav a.is-active {
+    background: transparent;
+    color: var(--text);
+  }
+
+
+  /* =======================================================
+     BUTTONS
+     ======================================================= */
+
+  .button {
+    width: auto;
+
+    min-height: 50px;
+
+    padding-inline: 23px;
+
+    font-size: .68rem;
+  }
+
+
+  /* =======================================================
+     HERO
+     ======================================================= */
+
+  .hero {
+    min-height: 760px;
+  }
+
+  .hero::before {
+    background-position: 60% center;
+  }
+
+  .hero-content {
+    padding-block: 120px 78px;
+  }
+
+  .hero h1 {
+    font-size:
+      clamp(
+        5rem,
+        8vw,
+        8rem
+      );
+  }
+
+  .hero-copy {
+    font-size: .88rem;
+  }
+
+  .hero-actions .button {
+    min-width: 160px;
+  }
+
+  .hero-status {
+    margin-top: 20px;
+
+    font-size: .6rem;
+  }
+
+
+  /* =======================================================
+     INTRO
+     ======================================================= */
+
+  .intro-layout {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(320px, .8fr);
+
+    gap: 80px;
+  }
+
+  .intro-layout h2 {
+    max-width: 760px;
+  }
+
+  .intro-art {
+    min-height: 360px;
+  }
+
+  .art-orb {
+    width: 145px;
+  }
+
+  .art-cube {
+    width: 70px;
+    height: 70px;
+  }
+
+  .art-cube--one {
+    top: 70px;
+    right: 70px;
+  }
+
+  .art-cube--two {
+    bottom: 56px;
+    left: 68px;
+
+    width: 47px;
+    height: 47px;
+  }
+
+  .pillars {
+    margin-top: 96px;
+  }
+
+  .pillar {
+    padding: 34px 32px 0 0;
+  }
+
+  .pillar + .pillar {
+    padding-left: 32px;
+  }
+
+  .pillar-number {
+    margin-bottom: 40px;
+  }
+
+  .pillar h3 {
+    font-size: 2rem;
+  }
+
+  .pillar p {
+    max-width: 260px;
+
+    font-size: .78rem;
+  }
+
+
+  /* =======================================================
+     SERVER
+     ======================================================= */
+
+  .server-card {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(340px, .75fr);
+
+    gap: 70px;
+
+    padding: 68px;
+
+    align-items: center;
+  }
+
+  .server-card h2 {
+    max-width: 620px;
+  }
+
+  .status-panel {
+    padding: 32px;
+  }
+
+  .status-panel-top {
+    margin-bottom: 20px;
+
+    font-size: .65rem;
+  }
+
+  .status-panel > strong {
+    margin-bottom: 26px;
+
+    font-size:
+      clamp(
+        3.4rem,
+        6vw,
+        5rem
+      );
+  }
+
+  .server-ip {
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 8px;
+  }
+
+  .server-ip code {
+    min-height: 0;
+
+    padding: 13px 14px;
+
+    font-size: .72rem;
+  }
+
+
+  /* =======================================================
+     SHOWCASE
+     ======================================================= */
+
+  .showcase-heading,
+  .section-heading {
+    gap: 50px;
+
+    margin-bottom: 58px;
+  }
+
+  .showcase-grid {
+    grid-template-columns:
+      1.35fr 1fr 1fr;
+
+    gap: 12px;
+  }
+
+  .feature-image--village {
+    grid-column: auto;
+  }
+
+  .feature-image {
+    min-height: 480px;
+
+    padding: 30px;
+  }
+
+  .feature-image h3 {
+    font-size: 2.5rem;
+  }
+
+
+  /* =======================================================
+     FEATURES
+     ======================================================= */
+
+  .feature-list {
+    grid-template-columns:
+      repeat(4, 1fr);
+  }
+
+  .feature-card {
+    min-height: 300px;
+
+    padding: 30px;
+  }
+
+  .feature-card > span {
+    margin-bottom: 80px;
+  }
+
+  .feature-card h3 {
+    font-size: 2.1rem;
+  }
+
+  .feature-card p {
+    max-width: 230px;
+
+    font-size: .75rem;
+  }
+
+
+  /* =======================================================
+     COMMUNITY
+     ======================================================= */
+
+  .community::before {
+    width: 620px;
+    height: 620px;
+  }
+
+  .community-inner {
+    gap: 50px;
+  }
+
+  .community p {
+    font-size: .82rem;
+  }
+
+
+  /* =======================================================
+     FAQ
+     ======================================================= */
+
+  .faq-layout {
+    grid-template-columns:
+      minmax(280px, .75fr)
+      minmax(0, 1fr);
+
+    gap: 100px;
+  }
+
+  .faq-layout h2 {
+    max-width: 500px;
+  }
+
+  .faq-list summary {
+    padding: 22px 0;
+
+    font-size: .82rem;
+  }
+
+  .faq-list details p {
+    font-size: .76rem;
+
+    line-height: 1.8;
+  }
+
+
+  /* =======================================================
+     FOOTER
+     ======================================================= */
+
+  .footer-grid {
+    grid-template-columns:
+      1.6fr
+      1fr
+      1fr
+      1.3fr;
+
+    gap: 40px;
+
+    padding-block: 58px;
+  }
+}

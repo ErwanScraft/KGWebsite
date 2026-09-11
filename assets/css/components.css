@@ -19,18 +19,14 @@
   border-radius: 8px;
 
   background: transparent;
-
   color: var(--text);
 
   font-size: .64rem;
   font-weight: 800;
 
   letter-spacing: .08em;
-
   line-height: 1;
-
   text-align: center;
-
   text-transform: uppercase;
 
   cursor: pointer;
@@ -52,7 +48,6 @@
 
 .button:focus-visible {
   outline: 2px solid var(--accent);
-
   outline-offset: 3px;
 }
 
@@ -63,7 +58,6 @@
 
 .button--primary {
   background: var(--accent);
-
   color: #0b0910;
 
   box-shadow:
@@ -124,7 +118,6 @@
   height: 7px;
 
   display: inline-block;
-
   flex: 0 0 auto;
 
   border-radius: 50%;
@@ -156,7 +149,6 @@
   font-weight: 800;
 
   letter-spacing: .07em;
-
   line-height: 1;
 
   white-space: nowrap;
@@ -185,8 +177,7 @@
 
   height: var(--header-height);
 
-  border-bottom:
-    1px solid transparent;
+  border-bottom: 1px solid transparent;
 
   background:
     rgba(8, 8, 10, .16);
@@ -212,7 +203,6 @@
   display: flex;
 
   align-items: center;
-
   justify-content: space-between;
 
   gap: 12px;
@@ -232,7 +222,6 @@
   height: 40px;
 
   display: grid;
-
   flex: 0 0 40px;
 
   align-content: center;
@@ -242,7 +231,6 @@
   padding: 10px;
 
   border: 1px solid var(--line);
-
   border-radius: 8px;
 
   background:
@@ -331,7 +319,6 @@
   backdrop-filter: blur(22px);
 
   opacity: 0;
-
   visibility: hidden;
 
   transform: translateY(-8px);
@@ -344,7 +331,6 @@
 
 .site-nav.is-open {
   opacity: 1;
-
   visibility: visible;
 
   transform: translateY(0);
@@ -361,7 +347,6 @@
   font-weight: 700;
 
   letter-spacing: .08em;
-
   line-height: 1.2;
 
   text-transform: uppercase;
@@ -378,7 +363,6 @@
 
 .site-nav a.is-active {
   background: var(--accent-soft);
-
   color: var(--accent-strong);
 }
 
@@ -409,7 +393,6 @@
   font-weight: 800;
 
   letter-spacing: .08em;
-
   text-transform: uppercase;
 
   transition:
@@ -423,116 +406,4 @@
 
   background:
     var(--accent-soft);
-}
-
-
-/* =========================================================
-   TABLET / DESKTOP
-   ========================================================= */
-
-@media (min-width: 701px) {
-  .header-inner {
-    gap: 24px;
-  }
-
-  .brand {
-    gap: 10px;
-
-    font-size: .86rem;
-  }
-
-  .brand-logo {
-    width: 34px;
-    height: 34px;
-  }
-
-  .nav-toggle {
-    display: none;
-  }
-
-  .header-cta {
-    display: inline-flex;
-  }
-
-  .site-nav {
-    position: static;
-
-    display: flex;
-
-    flex-direction: row;
-
-    align-items: center;
-
-    gap: 28px;
-
-    padding: 0;
-
-    border: 0;
-
-    border-radius: 0;
-
-    background: transparent;
-
-    box-shadow: none;
-
-    backdrop-filter: none;
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transform: none;
-  }
-
-  .site-nav a {
-    position: relative;
-
-    padding: 0;
-
-    border-radius: 0;
-
-    font-size: .65rem;
-  }
-
-  .site-nav a::after {
-    content: "";
-
-    position: absolute;
-
-    right: 0;
-    bottom: -9px;
-    left: 0;
-
-    height: 1px;
-
-    background: var(--accent);
-
-    transform: scaleX(0);
-
-    transform-origin: center;
-
-    transition:
-      transform .2s ease;
-  }
-
-  .site-nav a:hover::after,
-  .site-nav a.is-active::after {
-    transform: scaleX(1);
-  }
-
-  .site-nav a.is-active {
-    background: transparent;
-
-    color: var(--text);
-  }
-
-  .button {
-    width: auto;
-
-    min-height: 50px;
-
-    padding-inline: 23px;
-
-    font-size: .67rem;
-  }
 }
