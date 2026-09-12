@@ -19,9 +19,13 @@
 
   --container: 1180px;
   --gutter: 18px;
-
-  --radius: 10px;
   --header-height: 58px;
+
+  --radius-sm: 8px;
+  --radius: 10px;
+  --radius-lg: 12px;
+
+  --section-space: 68px;
 }
 
 
@@ -108,14 +112,9 @@ footer {
    ========================================================= */
 
 .container {
-  width: min(
-    calc(100% - (var(--gutter) * 2)),
-    var(--container)
-  );
-
+  width: min(calc(100% - (var(--gutter) * 2)), var(--container));
   margin-inline: auto;
 }
-
 
 /* =========================================================
    SECTIONS
@@ -123,7 +122,7 @@ footer {
 
 .section {
   position: relative;
-  padding-block: 68px;
+  padding-block: var(--section-space);
 }
 
 
@@ -212,10 +211,7 @@ h2 {
 @media (min-width: 361px) {
   :root {
     --gutter: 20px;
-  }
-
-  .section {
-    padding-block: 76px;
+    --section-space: 76px;
   }
 
   .section-copy {
