@@ -1,0 +1,10 @@
+{
+  "api": {
+    "baseUrl": "https://api.mcsrvstat.us/bedrock/3",
+    "timeout": 10000
+  },
+  "server": {
+    "address": "play.kgsmp.net"
+  },
+  "refresh": 300000
+}
