@@ -36,8 +36,7 @@ function chat_database(): PDO
 
 function chat_secret(): string
 {
-    return "sb_W5rNVT39ElsulcgT27X_290IhvDTrxh-4702Z1IsqaChSlq6cOYJwfnNgYlwOuB5
-";
+    return "sb_W5rNVT39ElsulcgT27X_290IhvDTrxh-4702Z1IsqaChSlq6cOYJwfnNgYlwOuB5";
 }
 
 function chat_json(array $data, int $status = 200): never
