@@ -1,14 +1,6 @@
 const CONFIG_URL = "assets/data/server.json";
 const STATUS_URL = "api/server-status.php";
 
-const DEFAULT_STATUS = {
-  online: false,
-  players: {
-    online: 0,
-    max: 0
-  }
-};
-
 async function loadConfig() {
   const response = await fetch(CONFIG_URL, {
     cache: "no-store"
@@ -91,12 +83,22 @@ function renderServerStatus(status, address) {
   const ipElement = document.querySelector(
     "[data-server-ip]"
   );
+  
+  const versionElement = document.querySelector(
+    "[data-server-version]"
+  );
+  
+  const motdElement = document.querySelector(
+    "[data-server-motd]"
+  );
 
   if (
     !stateElement ||
     !playerCountElement ||
     !playerMaxElement ||
-    !ipElement
+    !ipElement ||
+    !versionElement ||
+    !motdElement
   ) {
     console.error(
       "Server status elements not found"
@@ -120,6 +122,14 @@ function renderServerStatus(status, address) {
     : "0";
 
   ipElement.textContent = address;
+  
+  versionElement.textContent = online
+    ? status.version || "Unknown"
+    : "—";
+  
+  motdElement.textContent = online
+    ? status.motd || "—"
+    : "—";
 }
 
 function renderServerError(address) {
@@ -138,6 +148,14 @@ function renderServerError(address) {
   const ipElement = document.querySelector(
     "[data-server-ip]"
   );
+  
+  const versionElement = document.querySelector(
+    "[data-server-version]"
+  );
+  
+  const motdElement = document.querySelector(
+    "[data-server-motd]"
+  );
 
   if (stateElement) {
     stateElement.textContent = "ERROR";
@@ -153,6 +171,14 @@ function renderServerError(address) {
 
   if (ipElement) {
     ipElement.textContent = address;
+  }
+  
+  if (versionElement) {
+    versionElement.textContent = "—";
+  }
+  
+  if (motdElement) {
+    motdElement.textContent = "—";
   }
 }
 

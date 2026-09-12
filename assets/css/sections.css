@@ -448,6 +448,52 @@
   letter-spacing: .1em;
 }
 
+.server-meta {
+  display: grid;
+  grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr);
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+}
+
+.server-meta-item {
+  min-width: 0;
+
+  padding: 11px;
+
+  border: 1px solid var(--line);
+
+  background: var(--surface-2);
+}
+
+.server-meta-item > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--muted);
+
+  font-size: .48rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.server-meta-item > strong {
+  display: block;
+
+  overflow: hidden;
+
+  color: var(--muted-strong);
+
+  font-size: .65rem;
+  font-weight: 600;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .server-ip {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;

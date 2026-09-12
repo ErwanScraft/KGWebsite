@@ -313,7 +313,18 @@
           <span class="server-players-label">
             PLAYERS ONLINE
           </span>
-        
+          
+          <div class="server-meta">
+            <div class="server-meta-item">
+              <span>VERSION</span>
+              <strong data-server-version>—</strong>
+            </div>
+          
+            <div class="server-meta-item">
+              <span>MOTD</span>
+              <strong data-server-motd>—</strong>
+            </div>
+          </div>
         
           <div class="server-ip">
         
