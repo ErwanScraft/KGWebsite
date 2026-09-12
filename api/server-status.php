@@ -2,6 +2,7 @@
 
 header("Content-Type: application/json; charset=utf-8");
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("X-Content-Type-Options: nosniff");
 
 $configPath = __DIR__ . "/../assets/data/server.json";
 
@@ -21,6 +22,7 @@ $config = json_decode(
 );
 
 if (
+    !is_array($config) ||
     !isset($config["api"]["baseUrl"]) ||
     !isset($config["api"]["timeout"]) ||
     !isset($config["server"]["address"])
@@ -34,15 +36,46 @@ if (
     exit;
 }
 
+$baseUrl = rtrim(
+    $config["api"]["baseUrl"],
+    "/"
+);
+
+$address = trim(
+    $config["server"]["address"]
+);
+
+if ($address === "") {
+    http_response_code(500);
+
+    echo json_encode([
+        "error" => "Invalid server address"
+    ]);
+
+    exit;
+}
+
 $endpoint =
-    rtrim($config["api"]["baseUrl"], "/") .
+    $baseUrl .
     "/" .
-    rawurlencode($config["server"]["address"]);
+    rawurlencode($address);
 
 $timeout = max(
     1,
-    (int) ceil($config["api"]["timeout"] / 1000)
+    (int) ceil(
+        $config["api"]["timeout"] / 1000
+    )
 );
+
+if (!function_exists("curl_init")) {
+    http_response_code(500);
+
+    echo json_encode([
+        "error" => "cURL is not available"
+    ]);
+
+    exit;
+}
 
 $ch = curl_init($endpoint);
 
@@ -58,14 +91,10 @@ curl_setopt_array($ch, [
 ]);
 
 $response = curl_exec($ch);
-$status = curl_getinfo(
-    $ch,
-    CURLINFO_HTTP_CODE
-);
-
-curl_close($ch);
 
 if ($response === false) {
+    curl_close($ch);
+
     http_response_code(502);
 
     echo json_encode([
@@ -75,7 +104,17 @@ if ($response === false) {
     exit;
 }
 
-if ($status < 200 || $status >= 300) {
+$statusCode = curl_getinfo(
+    $ch,
+    CURLINFO_HTTP_CODE
+);
+
+curl_close($ch);
+
+if (
+    $statusCode < 200 ||
+    $statusCode >= 300
+) {
     http_response_code(502);
 
     echo json_encode([
@@ -100,4 +139,70 @@ if (!is_array($data)) {
     exit;
 }
 
-echo json_encode($data);
+/*
+ * Normalize upstream response.
+ */
+
+$online = $data["online"] ?? false;
+
+$playersOnline =
+    $data["players"]["online"] ?? 0;
+
+$playersMax =
+    $data["players"]["max"] ?? 0;
+
+$hostname =
+    $data["hostname"] ??
+    $address;
+
+$port =
+    $data["port"] ??
+    null;
+
+$version =
+    $data["version"] ??
+    null;
+
+$gamemode =
+    $data["gamemode"] ??
+    null;
+
+$motd = "";
+
+if (
+    isset($data["motd"]["clean"]) &&
+    is_array($data["motd"]["clean"]) &&
+    isset($data["motd"]["clean"][0])
+) {
+    $motd = trim(
+        (string) $data["motd"]["clean"][0]
+    );
+}
+
+$result = [
+    "online" => $online === true,
+
+    "players" => [
+        "online" => max(
+            0,
+            (int) $playersOnline
+        ),
+
+        "max" => max(
+            0,
+            (int) $playersMax
+        )
+    ],
+
+    "hostname" => $hostname,
+    "port" => $port,
+    "version" => $version,
+    "gamemode" => $gamemode,
+    "motd" => $motd
+];
+
+echo json_encode(
+    $result,
+    JSON_UNESCAPED_SLASHES |
+    JSON_UNESCAPED_UNICODE
+);

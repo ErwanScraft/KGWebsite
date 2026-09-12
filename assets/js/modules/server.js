@@ -6,7 +6,12 @@ const DEFAULT_STATUS = {
   players: {
     online: 0,
     max: 0
-  }
+  },
+  hostname: "",
+  port: null,
+  version: null,
+  gamemode: null,
+  motd: ""
 };
 
 async function loadConfig() {
@@ -20,7 +25,19 @@ async function loadConfig() {
     );
   }
 
-  return response.json();
+  const config = await response.json();
+
+  if (
+    !config.server?.address ||
+    !Number.isFinite(config.refresh) ||
+    config.refresh < 1000
+  ) {
+    throw new Error(
+      "Invalid server configuration"
+    );
+  }
+
+  return config;
 }
 
 async function fetchServerStatus() {
@@ -34,7 +51,23 @@ async function fetchServerStatus() {
     );
   }
 
-  return response.json();
+  const status = await response.json();
+
+  if (typeof status.online !== "boolean") {
+    throw new Error(
+      "Invalid server status response"
+    );
+  }
+
+  return {
+    ...DEFAULT_STATUS,
+    ...status,
+
+    players: {
+      ...DEFAULT_STATUS.players,
+      ...status.players
+    }
+  };
 }
 
 function renderServerStatus(status, address) {
@@ -54,23 +87,37 @@ function renderServerStatus(status, address) {
     "[data-server-ip]"
   );
 
+  if (
+    !stateElement ||
+    !playerCountElement ||
+    !playerMaxElement ||
+    !ipElement
+  ) {
+    return;
+  }
+
   const online = status.online === true;
+
+  const players = online
+    ? status.players.online
+    : 0;
+
+  const maxPlayers = online
+    ? status.players.max
+    : 0;
 
   stateElement.textContent = online
     ? "ONLINE"
     : "OFFLINE";
 
   playerCountElement.textContent =
-    online
-      ? status.players?.online ?? 0
-      : 0;
+    String(players);
 
   playerMaxElement.textContent =
-    online
-      ? status.players?.max ?? 0
-      : 0;
+    String(maxPlayers);
 
-  ipElement.textContent = address;
+  ipElement.textContent =
+    address;
 }
 
 async function updateServerStatus(address) {
@@ -82,7 +129,10 @@ async function updateServerStatus(address) {
       address
     );
   } catch (error) {
-    console.error("Server status:", error);
+    console.error(
+      "Server status:",
+      error
+    );
 
     renderServerStatus(
       DEFAULT_STATUS,
