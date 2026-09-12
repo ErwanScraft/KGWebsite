@@ -307,13 +307,14 @@
     gap: 12px;
   }
 
-  .feature-image--village {
+  .feature-image--explore {
     grid-column: auto;
   }
 
   .feature-image {
-    min-height: 480px;
-
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  
     padding: 30px;
   }
 

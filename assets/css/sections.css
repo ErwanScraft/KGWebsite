@@ -578,7 +578,8 @@
 .feature-image {
   position: relative;
 
-  min-height: 245px;
+  aspect-ratio: 16 / 10;
+  min-height: 0;
 
   display: flex;
   flex-direction: column;
