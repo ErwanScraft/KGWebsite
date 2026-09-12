@@ -1,4 +1,4 @@
-const CONFIG_URL = "../../data/server.json";
+const CONFIG_URL = "assets/data/server.json";
 const STATUS_URL = "api/server-status.php";
 
 const DEFAULT_STATUS = {
@@ -38,72 +38,79 @@ async function fetchServerStatus() {
 }
 
 function renderServerStatus(status, address) {
+  const stateElement = document.querySelector(
+    "[data-server-state]"
+  );
+
+  const playerCountElement = document.querySelector(
+    "[data-player-count]"
+  );
+
+  const playerMaxElement = document.querySelector(
+    "[data-player-max]"
+  );
+
+  const ipElement = document.querySelector(
+    "[data-server-ip]"
+  );
+
   const online = status.online === true;
 
-  const players = online
-    ? status.players?.online ?? 0
-    : 0;
+  stateElement.textContent = online
+    ? "ONLINE"
+    : "OFFLINE";
 
-  const maxPlayers = online
-    ? status.players?.max ?? 0
-    : 0;
+  playerCountElement.textContent =
+    online
+      ? status.players?.online ?? 0
+      : 0;
 
-  document.querySelectorAll("[data-server-state]").forEach(
-    (element) => {
-      element.textContent = online
-        ? "ONLINE"
-        : "OFFLINE";
-    }
-  );
+  playerMaxElement.textContent =
+    online
+      ? status.players?.max ?? 0
+      : 0;
 
-  document.querySelectorAll("[data-player-count]").forEach(
-    (element) => {
-      element.textContent = players;
-    }
-  );
-
-  document.querySelectorAll("[data-player-max]").forEach(
-    (element) => {
-      element.textContent = maxPlayers;
-    }
-  );
-
-  document.querySelectorAll("[data-server-ip]").forEach(
-    (element) => {
-      element.textContent = address;
-    }
-  );
+  ipElement.textContent = address;
 }
 
-async function updateServerStatus(config) {
+async function updateServerStatus(address) {
   try {
     const status = await fetchServerStatus();
 
     renderServerStatus(
       status,
-      config.server.address
+      address
     );
   } catch (error) {
     console.error("Server status:", error);
 
     renderServerStatus(
       DEFAULT_STATUS,
-      config.server.address
+      address
     );
   }
+}
+
+async function refreshServerStatus(config) {
+  await updateServerStatus(
+    config.server.address
+  );
+
+  setTimeout(
+    () => refreshServerStatus(config),
+    config.refresh
+  );
 }
 
 export async function initServerStatus() {
   try {
     const config = await loadConfig();
 
-    await updateServerStatus(config);
-
-    setInterval(
-      () => updateServerStatus(config),
-      config.refresh
-    );
+    await refreshServerStatus(config);
   } catch (error) {
-    console.error("Server configuration:", error);
+    console.error(
+      "Server configuration:",
+      error
+    );
   }
 }
