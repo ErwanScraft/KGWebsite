@@ -629,9 +629,9 @@
   transform: scale(1.04);
 }
 
-.feature-image--village::before,
-.feature-image--nether::before,
-.feature-image--mountain::before {
+.feature-image--explore:before,
+.feature-image--addon::before,
+.feature-image--customsystem::before {
   background:
     linear-gradient(
       135deg,
@@ -640,34 +640,34 @@
     );
 }
 
-.feature-image--village::before {
+.feature-image--explore::before {
   background-image:
     linear-gradient(
       135deg,
       rgba(155, 124, 255, .1),
       transparent
     ),
-    url("../images/village.webp");
+    url("../images/explore.webp");
 }
 
-.feature-image--nether::before {
+.feature-image--addon::before {
   background-image:
     linear-gradient(
       135deg,
       rgba(155, 124, 255, .1),
       transparent
     ),
-    url("../images/nether.webp");
+    url("../images/addon.webp");
 }
 
-.feature-image--mountain::before {
+.feature-image--customsystem::before {
   background-image:
     linear-gradient(
       135deg,
       rgba(155, 124, 255, .1),
       transparent
     ),
-    url("../images/mountain.webp");
+    url("../images/plugin.webp");
 }
 
 .feature-image > span {

@@ -117,7 +117,7 @@
         </h1>
     
         <p class="hero-tagline">
-          Build . Explore . Survive
+          Explore . Build . Survive
         </p>
     
         <p class="hero-copy">
@@ -177,8 +177,9 @@
           </h2>
 
           <p class="section-copy">
-            Masuk ke dunia survival KGSMP dan mulai petualanganmu.
-            Bangun base, jelajahi dunia, dan berkembang bersama komunitas.
+            KG Survival menghadirkan pengalaman survival Bedrock dengan dunia
+            yang terus berkembang, addon menarik, dan berbagai plugin
+            custom yang dikembangkan khusus untuk server.
           </p>
 
         </div>
@@ -206,53 +207,53 @@
       <div class="container pillars">
 
         <article class="pillar">
-
+        
           <span class="pillar-number">
             01
           </span>
-
+        
           <h3>
             Survival
           </h3>
-
+        
           <p>
-            Gameplay klasik dengan pengalaman modern.
+            Gameplay survival yang dirancang untuk progres jangka panjang.
           </p>
-
+        
         </article>
-
-
+        
+        
         <article class="pillar">
-
+        
           <span class="pillar-number">
             02
           </span>
-
+        
           <h3>
-            Community
+            Addons
           </h3>
-
+        
           <p>
-            Komunitas aktif, ramah, dan solid.
+            Addon menarik yang menambah variasi dan pengalaman bermain.
           </p>
-
+        
         </article>
-
-
+        
+        
         <article class="pillar">
-
+        
           <span class="pillar-number">
             03
           </span>
-
+        
           <h3>
-            Adventure
+            Custom Systems
           </h3>
-
+        
           <p>
-            Dunia yang dirancang untuk progres jangka panjang.
+            Berbagai plugin custom yang dikembangkan khusus untuk KGSMP.
           </p>
-
+        
         </article>
 
       </div>
@@ -476,8 +477,9 @@
           </div>
 
           <p class="section-copy">
-            Dari desa yang damai hingga wilayah berbahaya
-            yang belum dijelajahi.
+            Jelajahi dunia survival yang diperkaya dengan
+            addon menarik dan sistem custom yang membuat
+            pengalaman bermain KGSMP terasa berbeda.
           </p>
 
         </div>
@@ -485,54 +487,57 @@
 
         <div class="showcase-grid">
 
-          <article class="feature-image feature-image--village">
-
+          <article class="feature-image feature-image--explore">
+          
             <span>
               01
             </span>
-
+          
             <h3>
-              Villages
+              Explore
             </h3>
-
+          
             <p>
-              Bangun, bertahan, dan berkembang.
+              Jelajahi dunia, temukan tempat menarik,
+              dan bangun perjalananmu sendiri.
             </p>
-
+          
           </article>
-
-
-          <article class="feature-image feature-image--nether">
-
+          
+          
+          <article class="feature-image feature-image--addon">
+          
             <span>
               02
             </span>
-
+          
             <h3>
-              Dimensions
+              Addons
             </h3>
-
+          
             <p>
-              Temukan dunia yang berbeda.
+              Nikmati berbagai addon menarik yang
+              memperluas pengalaman bermain survival.
             </p>
-
+          
           </article>
-
-
-          <article class="feature-image feature-image--mountain">
-
+          
+          
+          <article class="feature-image feature-image--customsystem">
+          
             <span>
               03
             </span>
-
+          
             <h3>
-              Biomes
+              Custom Systems
             </h3>
-
+          
             <p>
-              Jelajahi lingkungan unik.
+              Rasakan fitur dan sistem unik dari
+              plugin custom yang dikembangkan untuk KGSMP.
             </p>
-
+          
           </article>
 
         </div>
@@ -689,13 +694,15 @@
             <span>QUESTIONS</span>
           </h2>
 
+          <p class="section-copy">
+            Jawaban singkat untuk pertanyaan umum tentang
+            KGSMP, versi Minecraft, dan cara bergabung.
+          </p>
+
         </div>
 
 
-        <div
-          class="faq-list"
-          data-faq
-        >
+        <div class="faq-list" data-faq>
 
           <details>
 
@@ -705,8 +712,10 @@
             </summary>
 
             <p>
-              Informasi versi server dapat dikonfigurasi
-              melalui modul server status.
+              KGSMP mendukung versi Minecraft yang sedang
+              digunakan oleh server. Versi yang aktif ditampilkan
+              secara otomatis pada Server Status berdasarkan
+              informasi server terbaru.
             </p>
 
           </details>
@@ -715,13 +724,13 @@
           <details>
 
             <summary>
-              Apakah server Java atau Bedrock?
+              KGSMP menggunakan Java Edition atau Bedrock Edition?
               <span aria-hidden="true">+</span>
             </summary>
 
             <p>
-              Tambahkan informasi platform server KGSMP
-              di bagian ini.
+              KGSMP adalah server khusus Minecraft: Bedrock Edition.
+              Server ini tidak ditujukan untuk Minecraft: Java Edition.
             </p>
 
           </details>
@@ -730,13 +739,14 @@
           <details>
 
             <summary>
-              Bagaimana cara join?
+              Bagaimana cara bergabung ke KGSMP?
               <span aria-hidden="true">+</span>
             </summary>
 
             <p>
-              Salin IP server pada bagian Server Status,
-              lalu masukkan ke Minecraft.
+              Buka Minecraft: Bedrock Edition, pilih Play lalu
+              Add Server. Masukkan alamat server dan port yang
+              ditampilkan pada bagian Server Status di website ini.
             </p>
 
           </details>
@@ -745,12 +755,14 @@
           <details>
 
             <summary>
-              Apakah server gratis dimainkan?
+              Apakah server selalu online?
               <span aria-hidden="true">+</span>
             </summary>
 
             <p>
-              Ya. Rank dan item tambahan bersifat opsional.
+              Server Status menampilkan kondisi server berdasarkan
+              pemeriksaan server terbaru. Jika server tidak dapat
+              dijangkau, status akan ditampilkan sebagai offline.
             </p>
 
           </details>
@@ -759,13 +771,64 @@
           <details>
 
             <summary>
-              Apakah KGSMP memiliki Whatsapp Group?
+              Apakah saya perlu memasang addon?
               <span aria-hidden="true">+</span>
             </summary>
-            
+
             <p>
-              Gunakan tombol Whatsapp Group untuk bergabung
-              dengan komunitas KGSMP.
+              Tidak selalu. Jika sebuah addon diperlukan untuk
+              fitur tertentu, informasi dan instruksi pemasangannya
+              akan diberikan oleh KGSMP.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Apakah KGSMP memiliki komunitas?
+              <span aria-hidden="true">+</span>
+            </summary>
+
+            <p>
+              Ya. Kamu dapat bergabung dengan komunitas WhatsApp
+              KGSMP untuk mendapatkan informasi terbaru,
+              berinteraksi dengan pemain lain, dan mengikuti
+              aktivitas server.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Apakah progress pemain akan tetap tersimpan?
+              <span aria-hidden="true">+</span>
+            </summary>
+
+            <p>
+              KGSMP dirancang sebagai server survival dengan
+              progres jangka panjang. Perkembangan pemain dan
+              dunia server dipertahankan selama server berjalan.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Bagaimana jika saya mengalami masalah saat bermain?
+              <span aria-hidden="true">+</span>
+            </summary>
+
+            <p>
+              Hubungi komunitas KGSMP melalui WhatsApp dan
+              jelaskan masalah yang kamu alami. Sertakan
+              informasi yang relevan agar proses bantuan
+              dan troubleshooting dapat dilakukan dengan lebih cepat.
             </p>
 
           </details>
