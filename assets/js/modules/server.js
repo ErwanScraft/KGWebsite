@@ -1,4 +1,5 @@
 const CONFIG_URL = "../../data/server.json";
+const STATUS_URL = "api/server-status.php";
 
 const DEFAULT_STATUS = {
   online: false,
@@ -22,38 +23,18 @@ async function loadConfig() {
   return response.json();
 }
 
-async function fetchServerStatus(config) {
-  const controller = new AbortController();
+async function fetchServerStatus() {
+  const response = await fetch(STATUS_URL, {
+    cache: "no-store"
+  });
 
-  const timeout = setTimeout(
-    () => controller.abort(),
-    config.api.timeout
-  );
-
-  try {
-    const endpoint =
-      `${config.api.baseUrl}/${encodeURIComponent(
-        config.server.address
-      )}`;
-
-    const response = await fetch(endpoint, {
-      signal: controller.signal,
-      headers: {
-        Accept: "application/json"
-      },
-      cache: "no-store"
-    });
-
-    if (!response.ok) {
-      throw new Error(
-        `Server API request failed: ${response.status}`
-      );
-    }
-
-    return await response.json();
-  } finally {
-    clearTimeout(timeout);
+  if (!response.ok) {
+    throw new Error(
+      `Server status request failed: ${response.status}`
+    );
   }
+
+  return response.json();
 }
 
 function renderServerStatus(status, address) {
@@ -96,7 +77,7 @@ function renderServerStatus(status, address) {
 
 async function updateServerStatus(config) {
   try {
-    const status = await fetchServerStatus(config);
+    const status = await fetchServerStatus();
 
     renderServerStatus(
       status,
