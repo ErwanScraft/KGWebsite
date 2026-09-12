@@ -6,12 +6,7 @@ const DEFAULT_STATUS = {
   players: {
     online: 0,
     max: 0
-  },
-  hostname: "",
-  port: null,
-  version: null,
-  gamemode: null,
-  motd: ""
+  }
 };
 
 async function loadConfig() {
@@ -21,19 +16,24 @@ async function loadConfig() {
 
   if (!response.ok) {
     throw new Error(
-      `Failed to load server config: ${response.status}`
+      `Config HTTP ${response.status}`
     );
   }
 
   const config = await response.json();
 
+  if (!config.server?.address) {
+    throw new Error(
+      "Server address is missing"
+    );
+  }
+
   if (
-    !config.server?.address ||
     !Number.isFinite(config.refresh) ||
     config.refresh < 1000
   ) {
     throw new Error(
-      "Invalid server configuration"
+      "Invalid refresh interval"
     );
   }
 
@@ -41,33 +41,38 @@ async function loadConfig() {
 }
 
 async function fetchServerStatus() {
-  const response = await fetch(STATUS_URL, {
-    cache: "no-store"
-  });
+  const response = await fetch(
+    `${STATUS_URL}?t=${Date.now()}`,
+    {
+      cache: "no-store"
+    }
+  );
+
+  const text = await response.text();
 
   if (!response.ok) {
     throw new Error(
-      `Server status request failed: ${response.status}`
+      `Status API HTTP ${response.status}: ${text}`
     );
   }
 
-  const status = await response.json();
+  let status;
+
+  try {
+    status = JSON.parse(text);
+  } catch {
+    throw new Error(
+      `Status API returned invalid JSON: ${text}`
+    );
+  }
 
   if (typeof status.online !== "boolean") {
     throw new Error(
-      "Invalid server status response"
+      "Status API returned invalid online value"
     );
   }
 
-  return {
-    ...DEFAULT_STATUS,
-    ...status,
-
-    players: {
-      ...DEFAULT_STATUS.players,
-      ...status.players
-    }
-  };
+  return status;
 }
 
 function renderServerStatus(status, address) {
@@ -93,36 +98,72 @@ function renderServerStatus(status, address) {
     !playerMaxElement ||
     !ipElement
   ) {
+    console.error(
+      "Server status elements not found"
+    );
+
     return;
   }
 
   const online = status.online === true;
 
-  const players = online
-    ? status.players.online
-    : 0;
-
-  const maxPlayers = online
-    ? status.players.max
-    : 0;
-
   stateElement.textContent = online
     ? "ONLINE"
     : "OFFLINE";
 
-  playerCountElement.textContent =
-    String(players);
+  playerCountElement.textContent = online
+    ? String(status.players?.online ?? 0)
+    : "0";
 
-  playerMaxElement.textContent =
-    String(maxPlayers);
+  playerMaxElement.textContent = online
+    ? String(status.players?.max ?? 0)
+    : "0";
 
-  ipElement.textContent =
-    address;
+  ipElement.textContent = address;
+}
+
+function renderServerError(address) {
+  const stateElement = document.querySelector(
+    "[data-server-state]"
+  );
+
+  const playerCountElement = document.querySelector(
+    "[data-player-count]"
+  );
+
+  const playerMaxElement = document.querySelector(
+    "[data-player-max]"
+  );
+
+  const ipElement = document.querySelector(
+    "[data-server-ip]"
+  );
+
+  if (stateElement) {
+    stateElement.textContent = "ERROR";
+  }
+
+  if (playerCountElement) {
+    playerCountElement.textContent = "—";
+  }
+
+  if (playerMaxElement) {
+    playerMaxElement.textContent = "—";
+  }
+
+  if (ipElement) {
+    ipElement.textContent = address;
+  }
 }
 
 async function updateServerStatus(address) {
   try {
     const status = await fetchServerStatus();
+
+    console.log(
+      "Server status:",
+      status
+    );
 
     renderServerStatus(
       status,
@@ -130,12 +171,11 @@ async function updateServerStatus(address) {
     );
   } catch (error) {
     console.error(
-      "Server status:",
+      "Server status API:",
       error
     );
 
-    renderServerStatus(
-      DEFAULT_STATUS,
+    renderServerError(
       address
     );
   }
