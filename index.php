@@ -353,6 +353,102 @@
       </div>
 
     </section>
+    
+    
+    <!-- Live Server Chat -->
+
+    <section
+      class="live-chat section"
+      id="live-chat"
+      aria-labelledby="live-chat-title"
+    >
+      <div class="container live-chat-layout">
+    
+        <div class="live-chat-content">
+    
+          <p class="eyebrow">
+            LIVE SERVER CHAT
+          </p>
+    
+          <h2 id="live-chat-title">
+            OBROLAN <span>SERVER</span>
+          </h2>
+    
+          <p class="section-copy">
+            Lihat percakapan pemain yang sedang bermain
+            langsung di server KGSMP.
+          </p>
+    
+        </div>
+    
+    
+        <div class="live-chat-panel">
+    
+          <div class="live-chat-header">
+    
+            <div class="live-chat-status">
+    
+              <span
+                class="status-dot"
+                aria-hidden="true"
+              ></span>
+    
+              <span data-chat-status>
+                TERHUBUNG
+              </span>
+    
+            </div>
+    
+            <span>
+              LIVE
+            </span>
+    
+          </div>
+    
+    
+          <div
+            class="live-chat-messages"
+            data-chat-messages
+            aria-live="polite"
+            aria-label="Obrolan pemain server"
+          >
+    
+            <p
+              class="live-chat-empty"
+              data-chat-empty
+            >
+              Belum ada percakapan.
+            </p>
+    
+          </div>
+    
+    
+          <div class="live-chat-note">
+    
+            <strong>
+              Ingin ikut ngobrol?
+            </strong>
+    
+            <p>
+              Bergabung dengan grup WhatsApp KGSMP
+              untuk berinteraksi langsung dengan komunitas
+              dan pemain yang sedang bermain.
+            </p>
+    
+            <a
+              class="button button--primary"
+              href="#community"
+            >
+              Gabung WhatsApp
+              <span aria-hidden="true">→</span>
+            </a>
+    
+          </div>
+    
+        </div>
+    
+      </div>
+    </section>
 
 
     <!-- Gameplay Showcase -->

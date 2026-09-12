@@ -824,6 +824,169 @@
   width: 100%;
 }
 
+/* =========================================================
+   LIVE CHAT
+   ========================================================= */
+
+.live-chat {
+  background:
+    linear-gradient(
+      180deg,
+      var(--surface),
+      var(--bg)
+    );
+}
+
+.live-chat-layout {
+  display: grid;
+
+  gap: 26px;
+}
+
+.live-chat-content {
+  max-width: 620px;
+}
+
+.live-chat-panel {
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+
+  background: var(--surface);
+}
+
+.live-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 48px;
+
+  padding: 0 14px;
+
+  border-bottom: 1px solid var(--line);
+
+  background: var(--surface-2);
+
+  color: var(--muted);
+
+  font-size: .52rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.live-chat-status {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--success);
+}
+
+.live-chat-messages {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  min-height: 300px;
+  max-height: 430px;
+
+  overflow-y: auto;
+
+  padding: 14px;
+
+  scrollbar-width: thin;
+}
+
+.live-chat-message {
+  padding: 11px 12px;
+
+  border: 1px solid var(--line);
+
+  background: rgba(255, 255, 255, .018);
+}
+
+.live-chat-message-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 5px;
+}
+
+.live-chat-message-header strong {
+  overflow: hidden;
+
+  color: var(--muted-strong);
+
+  font-size: .68rem;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.live-chat-message-header time {
+  flex-shrink: 0;
+
+  color: var(--muted);
+
+  font-size: .5rem;
+}
+
+.live-chat-message p {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: .68rem;
+  line-height: 1.55;
+
+  overflow-wrap: anywhere;
+}
+
+.live-chat-empty {
+  margin: auto;
+
+  color: var(--muted);
+
+  font-size: .62rem;
+  text-align: center;
+}
+
+.live-chat-note {
+  padding: 16px;
+
+  border-top: 1px solid var(--line);
+
+  background: rgba(255, 255, 255, .018);
+}
+
+.live-chat-note strong {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(--muted-strong);
+
+  font-size: .72rem;
+}
+
+.live-chat-note p {
+  margin: 0 0 14px;
+
+  color: var(--muted);
+
+  font-size: .62rem;
+  line-height: 1.6;
+}
+
+.live-chat-note .button {
+  width: 100%;
+}
 
 /* =========================================================
    FAQ
