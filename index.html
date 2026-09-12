@@ -289,33 +289,38 @@
 
 
         <div class="status-panel">
-
+        
           <div class="status-panel-top">
-
+        
             <span
               class="status-dot"
               aria-hidden="true"
             ></span>
-
+        
             <span data-server-state>
-              ONLINE
+              OFFLINE
             </span>
-
+        
           </div>
-
-
-          <strong>
+        
+        
+          <strong class="server-players">
             <span data-player-count>0</span>
+            <span class="server-players-separator" aria-hidden="true">/</span>
             <span data-player-max>0</span>
           </strong>
-
-
+        
+          <span class="server-players-label">
+            PLAYERS ONLINE
+          </span>
+        
+        
           <div class="server-ip">
-
+        
             <code data-server-ip>
               play.kgsmp.net
             </code>
-
+        
             <button
               class="copy-button"
               type="button"
@@ -324,17 +329,17 @@
             >
               Copy IP
             </button>
-
+        
           </div>
 
 
-          <span
-            class="copy-feedback"
-            data-copy-feedback
-            aria-live="polite"
-          ></span>
+  <span
+    class="copy-feedback"
+    data-copy-feedback
+    aria-live="polite"
+  ></span>
 
-        </div>
+</div>
 
       </div>
 

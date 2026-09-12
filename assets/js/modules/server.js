@@ -1,10 +1,11 @@
 const CONFIG_URL = "../../data/server.json";
 
 const DEFAULT_STATUS = {
-  state: "OFFLINE",
-  players: 0,
-  maxPlayers: 0,
-  ip: "—"
+  online: false,
+  players: {
+    online: 0,
+    max: 0
+  }
 };
 
 async function loadConfig() {
@@ -13,7 +14,9 @@ async function loadConfig() {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to load server config: ${response.status}`);
+    throw new Error(
+      `Failed to load server config: ${response.status}`
+    );
   }
 
   return response.json();
@@ -21,6 +24,7 @@ async function loadConfig() {
 
 async function fetchServerStatus(config) {
   const controller = new AbortController();
+
   const timeout = setTimeout(
     () => controller.abort(),
     config.api.timeout
@@ -28,15 +32,22 @@ async function fetchServerStatus(config) {
 
   try {
     const endpoint =
-      `${config.api.baseUrl}/${encodeURIComponent(config.server.address)}`;
+      `${config.api.baseUrl}/${encodeURIComponent(
+        config.server.address
+      )}`;
 
     const response = await fetch(endpoint, {
       signal: controller.signal,
+      headers: {
+        Accept: "application/json"
+      },
       cache: "no-store"
     });
 
     if (!response.ok) {
-      throw new Error(`API request failed: ${response.status}`);
+      throw new Error(
+        `Server API request failed: ${response.status}`
+      );
     }
 
     return await response.json();
@@ -45,52 +56,73 @@ async function fetchServerStatus(config) {
   }
 }
 
-function renderServerStatus(status, fallbackAddress) {
+function renderServerStatus(status, address) {
   const online = status.online === true;
 
-  const state = online ? "ONLINE" : "OFFLINE";
-  const players = online ? (status.players?.online ?? 0) : 0;
-  const maxPlayers = online ? (status.players?.max ?? 0) : 0;
+  const players = online
+    ? status.players?.online ?? 0
+    : 0;
 
-  document.querySelectorAll("[data-server-state]").forEach((element) => {
-    element.textContent = state;
-  });
+  const maxPlayers = online
+    ? status.players?.max ?? 0
+    : 0;
 
-  document.querySelectorAll("[data-player-count]").forEach((element) => {
-    element.textContent = players;
-  });
+  document.querySelectorAll("[data-server-state]").forEach(
+    (element) => {
+      element.textContent = online
+        ? "ONLINE"
+        : "OFFLINE";
+    }
+  );
 
-  document.querySelectorAll("[data-player-max]").forEach((element) => {
-    element.textContent = maxPlayers;
-  });
+  document.querySelectorAll("[data-player-count]").forEach(
+    (element) => {
+      element.textContent = players;
+    }
+  );
 
-  document.querySelectorAll("[data-server-ip]").forEach((element) => {
-    element.textContent =
-      status.hostname ||
-      fallbackAddress;
-  });
+  document.querySelectorAll("[data-player-max]").forEach(
+    (element) => {
+      element.textContent = maxPlayers;
+    }
+  );
+
+  document.querySelectorAll("[data-server-ip]").forEach(
+    (element) => {
+      element.textContent = address;
+    }
+  );
 }
 
-export async function initServerStatus() {
+async function updateServerStatus(config) {
   try {
-    const config = await loadConfig();
     const status = await fetchServerStatus(config);
 
     renderServerStatus(
       status,
       config.server.address
     );
-
-    setTimeout(
-      initServerStatus,
-      config.refresh
-    );
   } catch (error) {
     console.error("Server status:", error);
 
     renderServerStatus(
       DEFAULT_STATUS,
-      DEFAULT_STATUS.ip
+      config.server.address
     );
+  }
+}
+
+export async function initServerStatus() {
+  try {
+    const config = await loadConfig();
+
+    await updateServerStatus(config);
+
+    setInterval(
+      () => updateServerStatus(config),
+      config.refresh
+    );
+  } catch (error) {
+    console.error("Server configuration:", error);
   }
 }
