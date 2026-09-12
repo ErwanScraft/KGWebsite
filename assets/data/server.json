@@ -3,8 +3,8 @@
     "address": "server.kurebot.my.id:19138"
   },
   "api": {
-    "baseUrl": "https://api.mcsrvstat.us/3",
+    "baseUrl": "https://api.mcsrvstat.us/bedrock/3",
     "timeout": 10000
   },
-  "refresh": 300000
+  "refresh": 30000
 }
