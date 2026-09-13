@@ -21,13 +21,14 @@ final class ShowcaseService
         $posts = $this->repository->getPublished();
 
         foreach ($posts as &$post) {
-            $post["media_url"] = "/storage/" . ltrim(
-                $post["media_path"],
-                "/"
+            $post["media_url"] = showcase_media_url(
+                $post["media_path"]
             );
 
             unset($post["media_path"]);
         }
+
+        unset($post);
 
         return $posts;
     }

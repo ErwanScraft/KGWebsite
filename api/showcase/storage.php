@@ -119,7 +119,40 @@ function showcase_require_admin(): void
     }
 }
 
+function showcase_base_url(): string
+{
+    $scriptName = $_SERVER["SCRIPT_NAME"] ?? "";
+
+    $scriptPath = str_replace(
+        "\\",
+        "/",
+        $scriptName
+    );
+
+    $marker = "/api/showcase";
+
+    $position = strpos(
+        $scriptPath,
+        $marker
+    );
+
+    if ($position === false) {
+        return "";
+    }
+
+    return rtrim(
+        substr(
+            $scriptPath,
+            0,
+            $position
+        ),
+        "/"
+    );
+}
+
 function showcase_media_url(string $path): string
 {
-    return "../../storage/" . ltrim($path, "/");
+    return showcase_base_url() .
+        "/storage/" .
+        ltrim($path, "/");
 }
