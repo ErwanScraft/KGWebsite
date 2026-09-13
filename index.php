@@ -484,62 +484,23 @@
 
         </div>
 
-
-        <div class="showcase-grid">
-
-          <article class="feature-image feature-image--explore">
-          
-            <span>
-              01
-            </span>
-          
-            <h3>
-              Explore
-            </h3>
-          
-            <p>
-              Jelajahi dunia, temukan tempat menarik,
-              dan bangun perjalananmu sendiri.
-            </p>
-          
-          </article>
-          
-          
-          <article class="feature-image feature-image--addon">
-          
-            <span>
-              02
-            </span>
-          
-            <h3>
-              Addons
-            </h3>
-          
-            <p>
-              Nikmati berbagai addon menarik yang
-              memperluas pengalaman bermain survival.
-            </p>
-          
-          </article>
-          
-          
-          <article class="feature-image feature-image--customsystem">
-          
-            <span>
-              03
-            </span>
-          
-            <h3>
-              Custom Systems
-            </h3>
-          
-            <p>
-              Rasakan fitur dan sistem unik dari
-              plugin custom yang dikembangkan untuk KGSMP.
-            </p>
-          
-          </article>
-
+        <div
+          class="showcase-grid showcase-posts"
+          data-showcase-posts
+        >
+          <p class="showcase-loading">
+            Memuat gameplay komunitas...
+          </p>
+        </div>
+        
+        <div class="showcase-submit">
+          <a
+            class="button button--primary"
+            href="showcase.php"
+          >
+            Share Your Gameplay
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
 
       </div>
